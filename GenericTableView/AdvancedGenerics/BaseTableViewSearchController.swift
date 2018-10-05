@@ -5,6 +5,8 @@ class BaseTableViewSearchController<T: BaseTableViewCell<V>, V>: UITableViewCont
     private var strongDataSource: GenericTableViewDataSource<T, V>?
     private let searchController = UISearchController(searchResultsController: nil)
     
+    var filteredModels: [V] = []
+    
     var models: [V] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -27,8 +29,12 @@ class BaseTableViewSearchController<T: BaseTableViewCell<V>, V>: UITableViewCont
     private func setupSearchBar() {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
+//        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.sizeToFit()
         searchController.searchBar.delegate = self
+        definesPresentationContext = true
     }
  
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

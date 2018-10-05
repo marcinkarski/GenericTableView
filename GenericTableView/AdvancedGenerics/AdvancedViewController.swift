@@ -1,6 +1,6 @@
 import UIKit
 
-class UserViewController: BaseTableViewSearchController<UserCell, User> {
+class AdvancedViewController: BaseTableViewSearchController<UserCell, User> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -10,3 +10,4 @@ class UserViewController: BaseTableViewSearchController<UserCell, User> {
         self.models = users
     }
 }
+
