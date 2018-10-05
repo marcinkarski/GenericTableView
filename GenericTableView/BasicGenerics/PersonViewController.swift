@@ -31,24 +31,23 @@ class GenericTableViewCell<C>: UITableViewCell {
     }
 }
 
-struct User {
+struct Person {
     let name: String
 }
 
-class UserCell: GenericTableViewCell<User> {
-    override var item: User! {
+class PersonCell: GenericTableViewCell<Person> {
+    override var item: Person! {
         didSet {
             textLabel?.text = item.name
         }
     }
 }
 
-class ViewController: GenericTableViewController<UserCell, User> {
+class PersonViewController: GenericTableViewController<PersonCell, Person> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        items = [User(name: "Ania"), User(name: "Marcin")]
-
+        items = [Person(name: "Ania"), Person(name: "Marcin")]
     }
 }
